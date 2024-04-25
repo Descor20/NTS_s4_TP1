@@ -15,6 +15,9 @@ def create_maze(n, sizeX, sizeY, maxX, maxY, size_main_x, size_main_y):
     separation_steering_behavior(list_rooms)
     main_rooms = choose_main_rooms(list_rooms, size_main_x, size_main_y)
     
+    x_max, y_max, x_min, y_min = findNewDimensions(list_rooms)
+    prettyPrint(generateGrid(x_max, y_max, x_min, y_min, list_rooms,[]))
+
     ### Create a minimum spanning tree (delaunay is given)
     list_vertices, list_centers = delaunay(main_rooms)
     minspantree = minimal_spanning_tree(list_centers, list_vertices)
